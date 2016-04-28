@@ -268,6 +268,9 @@ function mapSourcePosition(position) {
     if (originalPosition.source !== null) {
       originalPosition.source = supportRelativeURL(
         sourceMap.url, originalPosition.source);
+      if (isURI(originalPosition.source)) {
+        originalPosition.source = toPath(originalPosition.source);
+      }
       return originalPosition;
     }
   }
